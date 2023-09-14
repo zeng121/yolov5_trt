@@ -43,23 +43,23 @@ public:
 	void UnInit();
 	void detect(Mat img);
 	//void loadOnnx(const std::string &strName);
-    int loadTrt(const std::string &strName); 
+        int loadTrt(const std::string &strName); 
 	void pre(Mat& img);
-    void pro();
+        void pro();
 	void nms(std::vector<BoxInfo>& input_boxes);  
 	//cv::Mat resize_image(cv::Mat srcimg, int *newh, int *neww, int *top, int *left);
-    void resize_image(Mat& img);
-    void drow(Mat& frame);
+    	void resize_image(Mat& img);
+   	void drow(Mat& frame);
 	float confThreshold;
 	float nmsThreshold;
 	float objThreshold;
 	int inpWidth;
 	int inpHeight;
-    int padw;
-    int padh;
-    float ratio;
-    Mat srcimg;
-    vector<BoxInfo> generate_boxes;
+    	int padw;
+    	int padh;
+    	float ratio;
+    	Mat srcimg;
+    	vector<BoxInfo> generate_boxes;
 	std::string classes[80] = {"person", "bicycle", "car", "motorbike", "aeroplane", "bus",
 							"train", "truck", "boat", "traffic light", "fire hydrant",
 							"stop sign", "parking meter", "bench", "bird", "cat", "dog",
@@ -76,21 +76,19 @@ public:
 							"teddy bear", "hair drier", "toothbrush"};
 	
 
-	//const bool keep_ratio = true;
-
+	
 
 	nvinfer1::ICudaEngine *m_CudaEngine; 
 	nvinfer1::IRuntime *m_CudaRuntime;
-    nvinfer1::IExecutionContext *m_CudaContext;
+    	nvinfer1::IExecutionContext *m_CudaContext;
 	cudaStream_t m_CudaStream;    // //初始化流,CUDA流的类型为cudaStream_t 
 private:
 	int m_iInputIndex;
-    int m_iOutputIndex; 
+    	int m_iOutputIndex; 
 	int ClassNums;
-    int BoxNums;
-	//cv::Size m_InputSize;
+   	int BoxNums;
 	void* m_ArrayDevMemory[2]{0};
-    void* m_ArrayHostMemory[2]{0}; 
+    	void* m_ArrayHostMemory[2]{0}; 
 	int m_ArraySize[2]{0};
 	//std::vector<cv::Mat> m_InputWrappers{}; 
 };
